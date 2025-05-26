@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document</title>
+	<style>
+		#settings, #configurations {
+			user-select: none;
+			height: 48px;
+			margin: 8px;
+			padding: 16px;
+			display: flex;
+			align-items: center;
+			font-family: 'Courier New', Courier, monospace;
+			font-weight: 700;
+		}
+		.inputs {
+			display: flex;
+			flex-direction: column;
+		}
+		#settings input {
+			margin: 4px;
+			height: 12px;
+			width: 64px;
+		}
+		.input-settings {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 80px;
+			max-width: 512px;
+			height: 16px;
+			margin: 2px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		.input-settings-button {
+			margin: 0;
+			padding: 0;
+			height: 16px;
+			width: 16px;
+			font-size: 8px;
+		}
+
+		.input-settings-input {
+			width: 64px;
+			height: 12px;
+			border: none;
+			font-size: 8px;
+			padding: 0;
+			background: transparent;
+			color: #333;
+			outline: none;
+		}
+		button {
+			width: 64px;
+			height: 64px;
+			background-color: rgb(224, 240, 248);
+			border: 1px solid #dadce0;
+			border-radius: 4px;
+			color: rgba(0, 0, 0, 0.5);
+			cursor: pointer;
+			font-weight: 700;
+			outline: none;
+			margin: 4px;
+			text-align: center;
+			text-transform: uppercase;
+			transition: box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+		button:hover, button:active, button.pressed {
+			box-shadow: 0 0 0 4px rgb(124, 147, 194);
+			background-color: rgb(204, 219, 255);
+		}
+		.controllings {
+			margin: 4px;
+		}
+		.controllings button {
+			margin: 0;
+			padding: 0 16px;
+
+		}
+
+		.slider-container {
+			background-color: #FFFFFF80;
+			margin: 4px;
+			padding: 8px;
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+		#slider-elapse {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 128px;
+			height: 16px;
+			background: #ddd;
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+		}
+
+		#slider-elapse::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 12px;
+			height: 16px;
+			background: #2196F3;
+			cursor: pointer;
+			box-shadow: 0 0 0 2px rgb(181, 201, 242);
+		}
+
+		#slider-elapse::-moz-range-thumb {
+			width: 12px;
+			height: 16px;
+			background: #2196F3;
+			cursor: pointer;
+			box-shadow: 0 0 0 2px rgb(181, 201, 242);
+		}
+		.silder-container label {
+			  margin-bottom: 10px;
+		}
+		.buttons-zoom-in-or-out {
+			display: flex;
+			flex-direction: column;
+		}
+		.buttons-zoom-in-or-out button {
+			width: 24px;
+			height: 24px;
+			padding: 0;
+			font-size: 16px;
+		}
+		.zoom-info {
+			display: flex;
+			flex-direction: column;
+			background-color: #00000000;
+		}
+		.zoom-info button {
+			width: 64px;
+			height: 24px;
+			margin: 0 4px 8px;
+		}
+		.zoom-info label {
+			width: auto;
+			height: 16px;
+			padding: 4px;
+			background-color: #FFFFFF80;
+			border-radius: 0px;
+			text-align: center;
+		}
+		.buttons-shift {
+			width: 128px;
+			height: 128px;
+			justify-content: space-between;
+			align-items: center;
+			position: relative;
+		}
+		.buttons-shift button {
+			width: 32px;
+			height: 32px;
+			margin: 0;
+			left: 50%;
+			top: 50%;
+			position: absolute;
+			transform-origin: -2px -2px;
+		}
+		#button-shift-left {
+			transform: rotate(135deg);
+		}
+		#button-shift-right {
+			transform: rotate(-45deg);
+		}
+		#button-shift-up {
+			transform: rotate(-135deg);
+		}
+		#button-shift-down {
+			transform: rotate(45deg);
+		}
+		.buttons-shift>button>div {
+			font-weight: 700;
+			transform: rotate(45deg);
+		}
+		.reshift-div {
+			left: 50%;
+			top: 50%;
+			background-color: #000;
+			border-radius: 4px;
+			box-shadow: 0 0 0 4px rgb(0, 0, 0);
+			position: absolute;
+		}
+		#reshift {
+			padding: 0 8px;
+		}
+		#showcase-settings {
+			user-select: none;
+			position: fixed;
+			width: auto;
+			height: 128px;
+			background-color: #FFFFFF80;
+			right: 16px;
+			top: 16px;
+			padding: 16px;
+
+			display: flex;
+			align-items: center;
+			justify-content: right;
+		}
+		#showcase-configurations {
+			margin-right: 16px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		#showcase-configurations button {
+			height: 32px;
+		}
+		#showcase-configurations label {
+			user-select: text;
+			width: auto;
+			height: auto;
+			font-family: monospace;
+		}
+		#showcase-configurations>div button {
+			width: 32px;
+			height: 32px;
+			transform: rotate(180deg);
+		}
+		body {
+			background-color:#a3d3e9;
+		}
+	</style>
+</head>
+<body>
+	<div id="settings">
+		<div class="inputs">
+			<div class="input-settings">
+				<button class="input-settings-button" onclick="playground.FitScreen(0)">寬</button>
+				<input type="text" id="input-width" class="input-settings-input">
+			</div>
+			<div class="input-settings">
+				<button class="input-settings-button" onclick="playground.FitScreen(1)">高</button>
+				<input type="text" id="input-height" class="input-settings-input">
+			</div>
+			<div class="input-settings">
+				<button class="input-settings-button" onclick="playground.FitScreen(2)">格</button>
+				<input type="text" id="input-size" class="input-settings-input">
+			</div>
+			<!-- <input type="text" id="input-width" placeholder="高">
+			<input type="text" id="input-height" placeholder="寬">
+			<input type="text" id="input-size" placeholder="尺寸"> -->
+		</div>
+		<div class="controllings">
+			<button id="button-fit" onclick="playground.FitScreen()">
+				適應屏幕
+			</button>
+			<button id="button-clear" onclick="playground.ClearColors()">
+				刷新圖像
+			</button>
+			<button id="button-random" onclick="playground.RandomColors()">
+				隨機初態
+			</button>
+			<button id="button-step" onclick="playground.GenerateColors()">
+				單步演化
+				<!-- （重新生成顔色） -->
+			</button>
+			<button id="button-steps" onclick="playground.UpdateColors()">
+				連續演化
+				<!-- /（更新顔色） -->
+			</button>
+		</div>
+	</div>
+	<div id="configurations">
+		<div class="slider-container">
+			<input type="range" id="slider-elapse" name="slider" min="0" max="4000" step="125" tabindex="0" value="125" oninput="ChangeElapse()">
+			<label for="slider-elapse">0.125s</label>
+		</div>
+		<div class="buttons-zoom-in-or-out">
+			<button id="zoom-in"  onclick="ZoomInOrOut(1)">
+				+
+			</button>
+			<button id="zoom-out" onclick="ZoomInOrOut(2)">
+				-
+			</button>
+		</div>
+		<div class="zoom-info">
+			<button id="rezoom" onclick="ZoomInOrOut(0)">
+				復原
+			</button>
+			<label>100.00%</label>
+		</div>
+
+		<div class="buttons-shift">
+			<button id="button-shift-left" onclick="VisionShift(3)">
+				<div>&ensp;&gt;</div>
+			</button>
+			<button id="button-shift-right" onclick="VisionShift(1)">
+				<div>&ensp;&gt;</div>
+			</button>
+			<button id="button-shift-up" onclick="VisionShift(0)">
+				<div>&ensp;&gt;</div>
+			</button>
+			<button id="button-shift-down" onclick="VisionShift(2)">
+				<div>&ensp;&gt;</div>
+			</button>
+			<div class="reshift-div"></div>
+			<button id="reshift" onclick="VisionShift(4)">
+				復原
+			</button>
+			<script>
+				let reshift = document.getElementById("reshift");
+				reshift.style["width"] = `${32 * Math.SQRT2 - 4}px`;
+				reshift.style["height"] = `${32 * Math.SQRT2 - 4}px`;
+				reshift.style["transform"] = `translate(${-16 * Math.SQRT2}px, ${-16 * Math.SQRT2}px)`;
+				let reshift_div = document.querySelector(".reshift-div");
+				reshift_div.style["width"] = `${32 * Math.SQRT2 - 6}px`;
+				reshift_div.style["height"] = `${32 * Math.SQRT2 - 6}px`;
+				reshift_div.style["transform"] = `translate(${-16 * Math.SQRT2 + 1}px, ${-16 * Math.SQRT2 + 1}px)`;
+			</script>
+		</div>
+
+	</div>
+	<div id="showcase-settings">
+		<div id="showcase-configurations">
+			<button id="button-change-prev" onclick="SetCursorTissue(0)">
+				▲
+			</button>
+			<label></label>
+			<button id="button-change-next" onclick="SetCursorTissue(1)">
+				▼
+			</button>
+			<div>
+				<button id="button-transform-CCWR" onclick="SetCursorTissue(2)">
+					↺
+				</button>
+				<button id="button-transform-mirror" onclick="SetCursorTissue(3)">
+					◫
+				</button>
+				<button id="button-transform-CWR" onclick="SetCursorTissue(4)">
+					↻
+				</button>
+			</div>
+		</div>
+	</div>
+	<script src="./mathjs_small.js"></script>
+	<script src="./CellMap.js"></script>
+</body>
+</html>

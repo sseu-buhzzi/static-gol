@@ -1,0 +1,12 @@
+{
+    "name": "Sigle Cell",
+    "cursor-tissue": {
+        "data": [
+            [true]
+        ],
+        "apex": [
+            [0, 0],
+            [1, 1]
+        ]
+    }
+}
