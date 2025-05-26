@@ -1,14 +1,14 @@
 {
-    "name": "Gosper Glider",
-    "cursor-tissue": {
-        "data": [
-            [false, true, false],
-            [false, false, true],
-            [true, true, true]
-        ],
-        "apex": [
-            [-1, -1],
-            [2, 2]
-        ]
-    }
+	"name": "Gosper Glider",
+	"cursor-tissue": {
+		"data": [
+			[false, true, false],
+			[false, false, true],
+			[true, true, true]
+		],
+		"apex": [
+			[-1, -1],
+			[2, 2]
+		]
+	}
 }
